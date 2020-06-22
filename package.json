@@ -9,6 +9,7 @@
   "author": "Andy Armstrong <andy@hexten.net>",
   "license": "ISC",
   "dependencies": {
+    "app-module-path": "^2.2.0",
     "bluebird": "^3.7.2",
     "dxf-parser": "^1.0.0-alpha.2",
     "lodash": "^4.17.15",
