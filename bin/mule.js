@@ -108,7 +108,12 @@ function foldLabels(entities) {
     console.log(bb);
 
     const { heights, orphans } = foldLabels(entities);
+    const noLabels = heights.filter(h => !h.labels.length);
+    console.log("Orphans:");
     showEntities(orphans);
+
+    console.log("Unlabelled:");
+    showEntities(noLabels);
   } catch (e) {
     console.error(e);
     process.exit(1);
