@@ -9,6 +9,7 @@ const _ = require("lodash");
 const printf = require("printf");
 const { bumper, mergeCounters, filterTail } = require("tools/functions");
 const { json, inspect } = require("tools/util");
+const { Model } = require("survey/model");
 
 function cleanText(str) {
   const m = str.match(/^\{\\C\d+;(.+)\}$/);
@@ -166,6 +167,17 @@ function matchOrphans(trove) {
     const src = "ref/Pike Lane Topographical Survey.dxf";
     const obj = await fs.readFileAsync(src, "latin1");
     const dxf = parser.parseSync(obj);
+
+    const model = new Model(dxf).filter(
+      ({ layer }) => /height/i.test(layer) && !/head/i.test(layer)
+    );
+
+    for (const entity of model.entities.e) {
+      if (entity.type === "MTEXT")
+        console.log(`${entity.handle} ${entity.label}`);
+    }
+    console.log(inspect(model.bounds));
+    process.exit(1);
 
     const entities = _.chain(dxf.entities)
       .map(e => ({ ...e, id: parseInt(e.handle, 16) }))
