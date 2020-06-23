@@ -131,6 +131,9 @@ function matchOrphans(trove) {
   const sNoLabel = new Set(trove.noLabels);
   const sOrphans = new Set(trove.orphans);
 
+  const distances = trove.heights.map(e => dist(e, e.labels)).sort();
+  const [minDist, maxDist] = [_.first(distances), _.last(distances)];
+
   for (const [hl, lls] of Object.entries(trove.layerAssoc)) {
     for (const ll of Object.keys(lls)) {
       const noLabels = nlGroup[hl] || [];
@@ -143,6 +146,7 @@ function matchOrphans(trove) {
 
       while (pairs.length) {
         const { noLabel, orphan, d } = pairs.shift();
+        if (d > maxDist * 2) break;
         if (sNoLabel.has(noLabel) && orphan.every(o => sOrphans.has(o))) {
           //          console.log(inspect({ noLabel, orphan, d }));
           noLabel.labels.push(...orphan);
