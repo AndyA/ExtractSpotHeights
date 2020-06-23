@@ -12,23 +12,47 @@
     "type": "git",
     "url": "git@github.com:AndyA/ExtractSpotHeights.git"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "tap",
+    "tdd": "tap -w"
+  },
   "author": "Andy Armstrong <andy@hexten.net>",
   "license": "ISC",
   "dependencies": {
     "app-module-path": "^2.2.0",
     "bluebird": "^3.7.2",
+    "config": "^3.3.1",
     "dxf-parser": "^1.0.0-alpha.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "handlebars": "^4.7.6",
     "lodash": "^4.17.15",
     "mixwith": "^0.1.1",
-    "printf": "^0.5.3"
+    "printf": "^0.5.3",
+    "three": "^0.117.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
     "@babel/plugin-transform-runtime": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.5.1",
+    "gulp": "^4.0.2",
+    "gulp-debug": "^4.0.0",
+    "gulp-live-server": "0.0.31",
+    "gulp-sass": "^4.1.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-terser": "^1.2.0",
+    "gulplog": "^1.0.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-three-fiber": "^4.2.10",
+    "should": "^13.2.3",
+    "tap": "^14.10.7",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0",
+    "watchify": "^3.11.1"
   }
 }
