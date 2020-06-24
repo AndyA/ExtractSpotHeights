@@ -54,14 +54,59 @@ describe("lazyAttr", () => {
     });
   });
 
+  it("should throw on a non-function", () => {
+    (() => lazyAttr(TestClass, { nf: {} })).should.throw(/function/);
+  });
+
   it("should throw on non-bindable function", () => {
-    (() => {
-      lazyAttr(TestClass, { nb: () => {} });
-    }).should.throw(/bindable/);
+    (() => lazyAttr(TestClass, { nb: () => {} })).should.throw(/bindable/);
   });
 
   it("should throw on an attempt to set", () => {
     const o1 = new TestClass("Monda");
     (() => (o1.fruit = "Apple")).should.throw();
+  });
+
+  describe("settable attributes", () => {
+    const TC = lazyAttr(
+      lazyAttr(
+        class {},
+        {
+          dyn: function() {
+            return "dynamic";
+          }
+        },
+        { rw: true }
+      ),
+      {
+        init: function() {
+          return "init";
+        }
+      },
+      { init: true }
+    );
+
+    it("should allow rw, init props to be set", () => {
+      const o = new TC();
+      o.init = "INIT";
+      o.dyn = "DYNAMIC";
+      o.init.should.equal("INIT");
+      o.dyn.should.equal("DYNAMIC");
+    });
+
+    it("should allow rw to be set after init", () => {
+      const o = new TC();
+      o.dyn.should.equal("dynamic");
+      o.dyn = "DYNAMIC";
+      o.dyn.should.equal("DYNAMIC");
+      o.dyn = "STATIC";
+      o.dyn.should.equal("STATIC");
+    });
+
+    it("should error init set after init", () => {
+      const o = new TC();
+      o.init.should.equal("init");
+      (() => (o.init = "INIT")).should.throw(/already/);
+    });
   });
 });
