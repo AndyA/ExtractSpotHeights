@@ -29,10 +29,22 @@ function jsTransform(appSource, destDir, watch) {
 
   if (watch) Object.assign(o, wa, { plugin: [watchify] });
 
-  const b = browserify(o).transform("babelify", {
-    presets: [["@babel/preset-env", { targets: "> 0.25%, not dead" }]],
-    plugins: [["@babel/plugin-transform-runtime", { regenerator: true }]]
-  });
+  const b = browserify(o)
+    .require(require.resolve("three/build/three.module.js"), {
+      expose: "three"
+    })
+    .transform("babelify", {
+      global: true,
+      sourceType: "unambiguous",
+      presets: [
+        ["@babel/preset-env", { targets: "> 0.25%, not dead" }],
+        "@babel/preset-react"
+      ],
+      plugins: [
+        "@babel/plugin-transform-modules-commonjs",
+        ["@babel/plugin-transform-runtime", { regenerator: true }]
+      ]
+    });
 
   function bundle() {
     log.info(`Rebuilding ${appSource} for ${ENV}`);

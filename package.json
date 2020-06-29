@@ -5,6 +5,12 @@
   "main": "index.js",
   "babel": {
     "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": "> 0.25%, not dead"
+        }
+      ],
       "@babel/preset-react"
     ]
   },
@@ -22,6 +28,7 @@
     "app-module-path": "^2.2.0",
     "bluebird": "^3.7.2",
     "config": "^3.3.1",
+    "delaunator": "^4.0.1",
     "dxf-parser": "^1.0.0-alpha.2",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
@@ -33,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.1",
     "@babel/plugin-transform-runtime": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
