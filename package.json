@@ -33,7 +33,7 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "handlebars": "^4.7.6",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "mixwith": "^0.1.1",
     "printf": "^0.5.3",
     "three": "^0.117.1"
