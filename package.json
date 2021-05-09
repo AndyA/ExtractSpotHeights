@@ -32,7 +32,7 @@
     "dxf-parser": "^1.0.0-alpha.2",
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "lodash": "^4.17.15",
     "mixwith": "^0.1.1",
     "printf": "^0.5.3",
