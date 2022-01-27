@@ -36,7 +36,7 @@
     "lodash": "^4.17.15",
     "mixwith": "^0.1.1",
     "printf": "^0.5.3",
-    "three": "^0.117.1"
+    "three": "^0.137.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
