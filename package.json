@@ -31,7 +31,7 @@
     "delaunator": "^4.0.1",
     "dxf-parser": "^1.0.0-alpha.2",
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4",
+    "express-handlebars": "^5.3.1",
     "handlebars": "^4.7.6",
     "lodash": "^4.17.15",
     "mixwith": "^0.1.1",
